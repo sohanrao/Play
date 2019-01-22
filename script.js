@@ -129,16 +129,22 @@
 
   $('#btnDeal').click(() => {
     $('.result').html('').hide();
+    $('#dealer').hide();
+    $('#dealerMask').show();
     d.reset();
     d.shuffle();
     const deal = d.deal();
     const {playerCards, dealerCards} = deal;
-    let playerStr = '', dealerStr = '';
+    let playerStr = '', dealerStr = '', dealerMaskStr = '';
 
     for(let p in playerCards) {
       const {suit, unicode} = playerCards[p];
       playerStr += `<div class="${suit.toLowerCase()}">${unicode}</div>`;
     }
+
+    dealerMaskStr += `<div class="${dealerCards[0].suit.toLowerCase()}">${dealerCards[0].unicode}</div>`;
+    dealerMaskStr += `<div class="spades">&#x1F0A0</div>`;
+    dealerMaskStr += `<div class="spades">&#x1F0A0</div>`;
 
     for(let dc in dealerCards) {
       const {suit, unicode} = dealerCards[dc];
@@ -146,6 +152,7 @@
     }
 
     $('#player').html(playerStr);
+    $('#dealerMask').html(dealerMaskStr);
     $('#dealer').html(dealerStr);
   })
 
@@ -154,6 +161,9 @@
     const playerHand = validateHand(playerCards);
     const dealerHand = validateHand(dealerCards);
     let winner = 'player';
+
+    $('#dealer').show();
+    $('#dealerMask').hide();
 
     winner = playerHand > dealerHand ? 'player' : 'dealer';
 
