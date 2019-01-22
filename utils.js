@@ -31,8 +31,15 @@ const isRoyal = values => {
   return false;
 }
 
-const resolveHighCard = (player, dealer) => {
+const resolveHighCard = (p, d) => {
+  const pValues = _.sortBy(_.map(p, 'value'));
+  const dValues = _.sortBy(_.map(d, 'value'));
+  let pWon = false;
+  pValues[0] = pValues[0] === 1 ? 15 : pValues[0];
+  dValues[0] = dValues[0] === 1 ? 15 : dValues[0];
 
+  pWon = _.max(pValues) > _.max(dValues);
+  return pWon;
 }
 
 const resolveHand = (player, dealer, result) => {

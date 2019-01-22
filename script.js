@@ -127,8 +127,8 @@
 
   const d = new Deck(3, 1);
 
-  $('#deal').click(() => {
-    $('.result').html('');
+  $('#btnDeal').click(() => {
+    $('.result').html('').hide();
     d.reset();
     d.shuffle();
     const deal = d.deal();
@@ -136,35 +136,41 @@
     let playerStr = '', dealerStr = '';
 
     for(let p in playerCards) {
-      playerStr += `<div>${playerCards[p].unicode}</div>`;
+      const {suit, unicode} = playerCards[p];
+      playerStr += `<div class="${suit.toLowerCase()}">${unicode}</div>`;
     }
 
     for(let dc in dealerCards) {
-      dealerStr += `<div>${dealerCards[dc].unicode}</div>`;
+      const {suit, unicode} = dealerCards[dc];
+      dealerStr += `<div class="${suit.toLowerCase()}">${unicode}</div>`;
     }
 
     $('#player').html(playerStr);
     $('#dealer').html(dealerStr);
   })
 
-  $('#result').click(() => {
+  $('#btnPlay').click(() => {
     const {playerCards, dealerCards} = d.currentDeal;
     const playerHand = validateHand(playerCards);
     const dealerHand = validateHand(dealerCards);
+    let winner = 'player';
 
-    console.log(`player:${playerHand} dealer:${dealerHand}`);
+    winner = playerHand > dealerHand ? 'player' : 'dealer';
 
-    if(playerHand > dealerHand) {
-      $('.result').addClass('win').html(`Player wins! `);
-    } else if(dealerHand > playerHand) {
-      $('.result').removeClass('win').html(`Dealer wins! `);
-    } else if(playerHand === dealerHand) {
+    if(playerHand === dealerHand) {
       if(playerHand === 0) {
-        Utils.hands.resolveHighCard(playerCards, dealerCards);
+        winner = Utils.resolveHighCard(playerCards, dealerCards) ? 'player' : 'dealer';
       } else {
-        Utils.hands.resolveHand(playerCards, dealerCards, playerHand);
+        winner = Utils.resolveHand(playerCards, dealerCards, playerHand)  ? 'player' : 'dealer';
       }
     }
-    $('.result').append(`${(_.invert(hands))[playerHand]} vs ${(_.invert(hands))[dealerHand]}`);
+
+    //render result
+    if(winner === 'player') {
+      $('.result').addClass('win').html(`Player wins! ~ `);
+    } else {
+      $('.result').removeClass('win').html(`Dealer wins! ~ `);
+    }
+    $('.result').append(`${(_.invert(hands))[playerHand]} vs ${(_.invert(hands))[dealerHand]}`).show();
   });
 })();
