@@ -31,6 +31,14 @@ const isRoyal = values => {
   return false;
 }
 
+const resolveHighCard = (player, dealer) => {
+
+}
+
+const resolveHand = (player, dealer, result) => {
+
+}
+
 const Utils = {
   hands: {
     isStraight: isStraight,
@@ -38,5 +46,7 @@ const Utils = {
     isPair: isPair,
     isTrips: isTrips,
     isRoyal: isRoyal
-  }
+  },
+  resolveHighCard: resolveHighCard,
+  resolveHand: resolveHand
 }

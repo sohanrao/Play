@@ -1,12 +1,18 @@
 (function() {
   const cards = [
-    {name: 'Ace', value: 1}, {name: '2', value: 2}, {name: '3', value: 3},
-    {name: '4', value: 4}, {name: '5', value: 5}, {name: '6', value: 6},
-    {name: '7', value: 7}, {name: '8', value: 8}, {name: '9', value: 9},
-    {name: '10', value: 10}, {name: 'Jack', value: 11},
-    {name: 'Queen', value: 12}, {name: 'King', value: 13}
+    {name: 'Ace', value: 1, un: '1'}, {name: '2', value: 2, un: '2'}, {name: '3', value: 3, un: '3'},
+    {name: '4', value: 4, un: '4'}, {name: '5', value: 5, un: '5'}, {name: '6', value: 6, un: '6'},
+    {name: '7', value: 7, un: '7'}, {name: '8', value: 8, un: '8'}, {name: '9', value: 9, un: '9'},
+    {name: '10', value: 10, un: 'A'}, {name: 'Jack', value: 11, un: 'B'},
+    {name: 'Queen', value: 12, un: 'D'}, {name: 'King', value: 13, un: 'E'}
   ];
   const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs'];
+  const suitCodes = {
+    SPADES: 'A',
+    HEARTS: 'B',
+    DIAMONDS: 'C',
+    CLUBS: 'D'
+  }
   const hands = {
     HIGH_CARD: 0,
     PAIR: 1,
@@ -53,12 +59,13 @@
 
     get item() {
       const { suit, card } = this;
-      const {name, value} = card;
+      const {name, value, un} = card;
       return {
         name: name,
         value: value,
         suit: suit,
-        displayName: `${name} of ${suit}`
+        displayName: `${name} of ${suit}`,
+        unicode: `&#x1F0${suitCodes[suit.toUpperCase()]}${un}`
       };
     }
   }
@@ -129,11 +136,11 @@
     let playerStr = '', dealerStr = '';
 
     for(let p in playerCards) {
-      playerStr += `<div>${playerCards[p].displayName}</div>`;
+      playerStr += `<div>${playerCards[p].unicode}</div>`;
     }
 
     for(let dc in dealerCards) {
-      dealerStr += `<div>${dealerCards[dc].displayName}</div>`;
+      dealerStr += `<div>${dealerCards[dc].unicode}</div>`;
     }
 
     $('#player').html(playerStr);
@@ -148,9 +155,9 @@
     console.log(`player:${playerHand} dealer:${dealerHand}`);
 
     if(playerHand > dealerHand) {
-      $('.result').addClass('win').html(`Player wins! ${(_.invert(hands))[playerHand]}`);
+      $('.result').addClass('win').html(`Player wins! `);
     } else if(dealerHand > playerHand) {
-      $('.result').removeClass('win').html(`Dealer wins! ${(_.invert(hands))[dealerHand]}`);
+      $('.result').removeClass('win').html(`Dealer wins! `);
     } else if(playerHand === dealerHand) {
       if(playerHand === 0) {
         Utils.hands.resolveHighCard(playerCards, dealerCards);
@@ -158,5 +165,6 @@
         Utils.hands.resolveHand(playerCards, dealerCards, playerHand);
       }
     }
+    $('.result').append(`${(_.invert(hands))[playerHand]} vs ${(_.invert(hands))[dealerHand]}`);
   });
 })();
