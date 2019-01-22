@@ -1,3 +1,45 @@
 body {
-  font-family: 'Segoe UI, Helvetica, Arial';
+  padding: 20px;
+  margin: 0;
+  border: 10px solid #ccc;
+  font-family: Arial;
+}
+
+button {
+  font-size: 16px;
+  padding: 5px 10px;
+  background: #0066cc;
+  color: #fff;
+  border: 1px solid #0066cc;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.player {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-family: Arial;
+}
+
+.player > div {
+  margin-top: 5px;
+}
+
+.player.winner {
+  background: #c2fc3c;
+}
+
+.nav {
+  display: inline-block;
+}
+
+.result {
+  color: #CC0000;
+  font-size: 24px;
+  margin: 10px 0;
+}
+.result.win {
+  color: #44C444;
 }

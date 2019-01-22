@@ -1,11 +1,21 @@
 <doctype html>
 <html>
 <head>
-<title>Play</title>
-<link rel="stylesheet" src="styles.css" />
-<link rel="shortcut icon" href="favicon.ico" />
-<script src="jquery-3.3.1.min.js"></script>
-<script src="script.js"></script>
+  <title>Play</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="lodash.js"></script>
 </head>
-<body>Play games</body>
+<body>
+  <div class="nav">
+    <button id="deal">Play</button>
+    <button id="result">Result</button>
+  </div>
+  <div class="result"></div>
+  <div id="player" class="player"></div>
+  <div id="dealer" class="player"></div>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="utils.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>
