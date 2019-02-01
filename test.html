@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<title>Test ::</title>
+<style>
+.container {
+  display: flex;
+  flex-flow: row wrap;
+}
+.container > * {
+    flex: 1 100%;
+    border: 1px solid #333;
+    margin: 5px;
+}
+@media all and (min-width: 600px) {
+  .nav { flex: 1 0 0; }
+}
+.navleft {
+    background: #fda;
+}
+
+.navright {
+    background: #000;
+    height: 200px;
+}
+
+.main { flex: 3 0px; }
+
+.content {
+    height: 50px;
+    background: #333;
+    margin: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    height: 40px;
+    align-self: center;
+    margin: 5px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <header class="header">Header</header>
+    <div class="nav navleft">
+        <ul>
+            <li>Nav Item 1</li>
+            <li>Nav Item 1</li>
+            <li>Nav Item 1</li>
+            <li>Nav Item 1</li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="content">
+            <button>Open Popup</button>
+        </div>
+    </div>
+    <div class="nav navright">
+        <div>Today's date:</div>
+        <div class="date-display"></div>
+    </div>
+    <footer class="footer">Footer</footer>
+    <div class="modal">sdfsdfsdfsdf</div>
+</div>
+</body>
+</html>
