@@ -1,4 +1,5 @@
 (function() {
+
   const cards = [
     {name: 'Ace', value: 1, un: '1'}, {name: '2', value: 2, un: '2'}, {name: '3', value: 3, un: '3'},
     {name: '4', value: 4, un: '4'}, {name: '5', value: 5, un: '5'}, {name: '6', value: 6, un: '6'},
@@ -132,6 +133,7 @@
   const $dealerCardsMask = $(".dealer-area > .cards-mask");
   const $playerCards = $('.player2 > .card-holder');
   const $resultDiv = $(".result");
+
   $('.result').html('').hide();
 
   $btnDeal.click(() => {
