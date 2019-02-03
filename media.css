@@ -1,0 +1,23 @@
+@media (min-width: 1280px) {
+  body {
+    background: url('bg2.jpg');
+    background-size: 100%;
+  }
+
+  .container {
+    top: 10%;
+    right: 10%;
+    bottom: 10%;
+    left: 10%;
+  }
+
+  .switchToLandscape {
+    display: none;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .switchToLandscape {
+    display: block;
+  }
+}

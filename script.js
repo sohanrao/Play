@@ -126,11 +126,18 @@
   }
 
   const d = new Deck(3, 1);
+  const $btnDeal = $('.btn-deal');
+  const $btnPlay = $('.player2 .play');
+  const $dealerCards = $(".dealer-area > .cards");
+  const $dealerCardsMask = $(".dealer-area > .cards-mask");
+  const $playerCards = $('.player2 > .card-holder');
+  const $resultDiv = $(".result");
+  $('.result').html('').hide();
 
-  $('#btnDeal').click(() => {
-    $('.result').html('').hide();
-    $('#dealer').hide();
-    $('#dealerMask').show();
+  $btnDeal.click(() => {
+    $resultDiv.html('').hide();
+    $dealerCards.hide();
+    $dealerCardsMask.show();
     d.reset();
     d.shuffle();
     const deal = d.deal();
@@ -139,31 +146,32 @@
 
     for(let p in playerCards) {
       const {suit, unicode} = playerCards[p];
-      playerStr += `<div class="${suit.toLowerCase()}">${unicode}</div>`;
+      playerStr += `<div class="card ${suit.toLowerCase()}"><div class="card-inner">${unicode}</div></div>`;
     }
 
-    dealerMaskStr += `<div class="${dealerCards[0].suit.toLowerCase()}">${dealerCards[0].unicode}</div>`;
-    dealerMaskStr += `<div class="spades">&#x1F0A0</div>`;
-    dealerMaskStr += `<div class="spades">&#x1F0A0</div>`;
+    dealerMaskStr += `<div class="card ${dealerCards[0].suit.toLowerCase()}"><div class="card-inner">${dealerCards[0].unicode}</div></div>`;
+    dealerMaskStr += `<div class="card spades"><div class="card-inner">&#x1F0A0</div></div>`;
+    dealerMaskStr += `<div class="card spades"><div class="card-inner">&#x1F0A0</div></div>`;
 
     for(let dc in dealerCards) {
       const {suit, unicode} = dealerCards[dc];
-      dealerStr += `<div class="${suit.toLowerCase()}">${unicode}</div>`;
+      dealerStr += `<div class="card ${suit.toLowerCase()}"><div class="card-inner">${unicode}</div></div>`;
     }
 
-    $('#player').html(playerStr);
-    $('#dealerMask').html(dealerMaskStr);
-    $('#dealer').html(dealerStr);
+    $playerCards.html(playerStr);
+    $dealerCardsMask.html(dealerMaskStr);
+    $dealerCards.html(dealerStr);
   })
 
-  $('#btnPlay').click(() => {
+  $btnPlay.click(() => {
+    console.log("sdsdfsdf");
     const {playerCards, dealerCards} = d.currentDeal;
     const playerHand = validateHand(playerCards);
     const dealerHand = validateHand(dealerCards);
     let winner = 'player';
 
-    $('#dealer').show();
-    $('#dealerMask').hide();
+    $dealerCards.show();
+    $dealerCardsMask.hide();
 
     winner = playerHand > dealerHand ? 'player' : 'dealer';
 
@@ -176,11 +184,8 @@
     }
 
     //render result
-    if(winner === 'player') {
-      $('.result').addClass('win').html(`Player wins! ~ `);
-    } else {
-      $('.result').removeClass('win').html(`Dealer wins! ~ `);
-    }
-    $('.result').append(`${(_.invert(hands))[playerHand]} vs ${(_.invert(hands))[dealerHand]}`).show();
+    const result = winner === 'player' ? 'You Win!' : 'You lose!';
+    $resultDiv.show().html(result);
+    //$resultDiv.append(`${(_.invert(hands))[playerHand]} vs ${(_.invert(hands))[dealerHand]}`).show();
   });
 })();

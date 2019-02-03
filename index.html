@@ -1,23 +1,56 @@
-<doctype html>
+<!doctype html>
 <html>
 <head>
   <title>Play</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="cards.css">
   <link rel="shortcut icon" href="favicon.ico">
   <script src="lodash.js"></script>
 </head>
 <body>
-  <div class="nav">
-    <button id="btnDeal">Bet</button>
-    <button id="btnPlay">Play</button>
-    <button id="btnFold">Fold</button>
+  <div class="container">
+    <button class="btn-deal">DEAL</button>
+    <div class="dealer-area">
+      <div class="cards"></div>
+      <div class="cards-mask"></div>
+    </div>
+    <div class="player-area">
+      <div class="player player1">
+        <div class="card-holder"></div>
+        <div class="action-btns">
+          <button class="ante">Ante</button>
+          <button class="play">Play</button>
+          <button class="pairplus"><div>Pair+</div></button>
+          <button class="sixcard"><div>6card</div></button>
+        </div>
+      </div>
+      <div class="player player2">
+        <div class="card-holder"></div>
+        <div class="action-btns">
+          <button class="ante">Ante</button>
+          <button class="play">Play</button>
+          <button class="pairplus"><div>Pair+</div></button>
+          <button class="sixcard"><div>6card</div></button>
+        </div>
+      </div>
+      <div class="player player3">
+        <div class="card-holder"></div>
+        <div class="action-btns">
+          <button class="ante">Ante</button>
+          <button class="play">Play</button>
+          <button class="pairplus"><div>Pair+</div></button>
+          <button class="sixcard"><div>6card</div></button>
+        </div>
+      </div>
+    </div>
+    <div class="result">
+
+    </div>
   </div>
 
-  <div class="table">
-    <div id="dealerMask" class="player"></div>
-    <div id="dealer" class="player"></div>
-    <div class="result"></div>
-    <div id="player" class="player"></div>
+  <div class="switchToLandscape">
+    Switch device to Landscape mode!
   </div>
 
   <script src="jquery-3.3.1.min.js"></script>
