@@ -8,162 +8,54 @@ body {
 button {
   cursor: pointer;
   outline: none;
-}
-
-.btn-deal {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  text-decoration: none;
-  background: #8cd460;
-  color: rgba(255, 255, 255);
-  font-weight: bold;
-  width: 60px;
-  height: 60px;
-  line-height: 54px;
-  border-radius: 50%;
-  text-align: center;
-  box-shadow: 0px 0px 0px 5px #8cd460;
-  border: solid 2px rgba(255, 255, 255, 0.47);
-  transition: .4s;
-}
-
-.btn-deal:hover {
-  border-style: dashed;
-}
-
-.action-btns {
-  width: 17em;
-  height: 140px;
-  position: relative;
-  align-self: center;
-}
-.action-btns > button {
-  background: none;
-  border-width: 7px;
-  border-style: solid;
-  color: #73B641;
-  font-size: 1em;
-  position: absolute;
-}
-.action-btns > button:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-.action-btns > .ante {
-  border-color: #54C2C6;
-  width: 90px;
-  height: 60px;
-  border-radius: 50%;
-  left: calc(50% - 45px);
-}
-.action-btns > .play {
-  border-color: #73B641;
-  width: 100px;
-  height: 70px;
-  border-radius: 50%;
-  left: calc(50% - 50px);
-  top: 70px;
-}
-.action-btns > .pairplus {
-  border-color: #EFC230;
-  transform: rotate(45deg);
-  width: 70px;
-  height: 70px;
-  left: 20px;
-  top: 30px;
-}
-.action-btns > .pairplus > div {
-  transform: rotate(-45deg);
-}
-.action-btns > .sixcard {
-  border-color: #EE5D30;
-  transform: rotate(45deg);
-  width: 70px;
-  height: 70px;
-  top: 30px;
-  right: 20px;
-}
-.action-btns > .sixcard > div {
-  transform: rotate(-45deg);
-}
-
-.player-area {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  bottom: 10px;
-  top: 40%;
-  left: 10px;
-  right: 10px;
-}
-
-.player-area > .player {
-  margin: 5px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.card-holder {
-  flex-grow: 1;
-}
-
-.container, .container:before {
-  border-style: solid;
-  border-color: #b3743d; /* fallback color */
-  border-image: linear-gradient(30deg, #b3743d 0%, #d0a987 50%, #b3743d 100%);
-  border-image-slice: 1;
+  border: 1px solid #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: #333;
 }
 
 .container {
-  background: radial-gradient(#297738, #153d1b);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-image: linear-gradient(#89f7fe, #66a6ff);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+#dealer, #players {
+  width: 100%;
+  height: 50%;
+}
+
+.cards, .cards-mask {
+  padding: 20px;
+}
+
+#players {
+  display: flex;
+}
+
+#players > .player {
+  width: 100%;
+  margin-top: 40px;
+}
+
+#btnDeal, #btnPlay {
   position: absolute;
   top: 20px;
   left: 20px;
-  right: 20px;
-  bottom: 20px;
-  border-width: 6px;
 }
 
-.container:before {
-  content: " ";
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
-  border-width: 3px;
-}
-
-.dealer-area, .result {
-  position:absolute;
-  left: 10px;
-  right: 10px;
-  top: 10px;
+#btnPlay {
+  top: 50px;
 }
 
 .result {
-  height: 100px;
-  left: 0;
-  right: 0;
-  color: #fff;
-  top: 60%;
-  background-color: rgba(0,0,0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-}
-
-.switchToLandscape {
-  background: #fff;
+  width: 100%;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: none;
+  top: calc(50% - 25px);
 }

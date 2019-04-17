@@ -46,6 +46,11 @@ const resolveHand = (player, dealer, result) => {
 
 }
 
+const getHighestValue = d => {
+  const values = _.sortBy(_.map(d, 'value'));
+  return _.max(values);
+}
+
 const Utils = {
   hands: {
     isStraight: isStraight,
@@ -55,5 +60,6 @@ const Utils = {
     isRoyal: isRoyal
   },
   resolveHighCard: resolveHighCard,
-  resolveHand: resolveHand
+  resolveHand: resolveHand,
+  getHighestValue: getHighestValue
 }
